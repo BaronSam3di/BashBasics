@@ -1,8 +1,10 @@
-#!/bin/bash
-#
+#!/bin/bash     #<<<<  This is known as the Bash Shebang and tells  
+
+
 # Arithmatic Game 
 #
-# Initialize global variables
+
+########## Initialize global variables
 
 NUMBER=0
 NUMBER1=0
@@ -11,6 +13,8 @@ CORRECT_ANSWER=0
 ANSWER=0
 CORRECT=0
 MAX_TRIES=3
+
+########## Write Functions
 
 function generate_question(){
     generate_numbers
@@ -77,6 +81,8 @@ function write_to_the_log(){
         echo "Answer to $QUESTION ($CORRECT_ANSWER) not given" >> Arithmatic-Game-logfile.txt
     fi
 }
+
+########## Put it all together
 
 init_log
 
