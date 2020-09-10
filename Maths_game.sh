@@ -6,6 +6,8 @@
 
 ########## Initialize global variables
 
+# Assignment not equality
+
 NUMBER=0
 NUMBER1=0
 NUMBER2=0
@@ -16,24 +18,26 @@ MAX_TRIES=3
 
 ########## Write Functions
 
+# FUNCTION NAME (VARIABLES) {ACTION}
+
 function generate_question(){
-    generate_numbers
-    determine_operation
-    QUESTION="$NUMBER1 $OPERATION $NUMBER2"
+    generate_numbers                                    # Run generate numbers
+    determine_operation                                 # determin the operation, plus, multiple etc
+    QUESTION="$NUMBER1 $OPERATION $NUMBER2"             # Create a question
 }
 
 function generate_numbers(){
-    generate_number
-    NUMBER1=$NUMBER
-    generate_number
-    NUMBER2=$NUMBER
+    generate_number                                     # Generate 1st number
+    NUMBER1=$NUMBER                                     # assign the first number to a variable called NUMBER1
+    generate_number                                     # Generate a 2nd  number
+    NUMBER2=$NUMBER                                     # assign the 2nd number to a variable called NUMBER2
 }
 
-function generate_number(){
-    NUMBER=$((RANDOM%10+1))
+function generate_number(){                             # generates the first random number from the internal random number generator
+    NUMBER=$((RANDOM%10+1))                     
 }
 
-function determine_operation(){
+function determine_operation(){                         # generates a random number out of 3 and uses it to choose a operand
     RAND=$((RANDOM%3))
     case $RAND in 
         1) OPERATION='*';;
@@ -42,7 +46,7 @@ function determine_operation(){
     esac
 }
 
-function calculate_answer(){
+function calculate_answer(){                           
     CORRECT_ANSWER="$(echo "$QUESTION" | bc )"
 }
 
