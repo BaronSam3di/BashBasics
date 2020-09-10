@@ -47,7 +47,7 @@ function determine_operation(){                         # generates a random num
 }
 
 function calculate_answer(){                           
-    CORRECT_ANSWER="$(echo "$QUESTION" | bc )"
+    CORRECT_ANSWER="$(echo "$QUESTION" | bc )"          # get eh right answer by echoing the question to bc which rounds the numbers 
 }
 
 function check_answer(){
