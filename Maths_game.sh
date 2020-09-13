@@ -47,11 +47,11 @@ function determine_operation(){                         # generates a random num
 }
 
 function calculate_answer(){                           
-    CORRECT_ANSWER="$(echo "$QUESTION" | bc )"          # get eh right answer by echoing the question to bc which rounds the numbers 
+    CORRECT_ANSWER="$(echo "$QUESTION" | bc )"          # get the right answer by echoing the question to bc which rounds the numbers 
 }
 
 function check_answer(){
-    if [ $ANSWER -eq $CORRECT_ANSWER 2>/dev/null ] ; then
+    if [ $ANSWER -eq $CORRECT_ANSWER 2>/dev/null ] ; then           " Specifying 2>/dev/null will filter out the errors so that they will not be output to your console. In more detail: 2 represents the error descriptor, which is where errors are written to. By default they are printed out on the console. /dev/null is the standard Linux device where you send output that you want ignored."
         echo "Correct!"
         CORRECT=1
         if [ $TRY -ne 1 ] ; then
