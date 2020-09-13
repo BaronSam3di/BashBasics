@@ -51,7 +51,7 @@ function calculate_answer(){
 }
 
 function check_answer(){
-    if [ $ANSWER -eq $CORRECT_ANSWER 2>/dev/null ] ; then           " Specifying 2>/dev/null will filter out the errors so that they will not be output to your console. In more detail: 2 represents the error descriptor, which is where errors are written to. By default they are printed out on the console. /dev/null is the standard Linux device where you send output that you want ignored."
+    if [ $ANSWER -eq $CORRECT_ANSWER 2>/dev/null ] ; then          # Specifying 2>/dev/null will filter out the errors so that they will not be output to your console. In more detail: 2 represents the error descriptor, which is where errors are written to. By default they are printed out on the console. /dev/null is the standard Linux device where you send output that you want ignored.
         echo "Correct!"
         CORRECT=1
         if [ $TRY -ne 1 ] ; then
@@ -99,7 +99,7 @@ do
     calculate_answer
     
     echo "How much is $QUESTION ? ( attempt $TRY)"
-    while [ $CORRECT -ne 1 ] && [ $TRY -le $MAX_TRIES ]
+    while [ $CORRECT -ne 1 ] && [ $TRY -le $MAX_TRIES ]         # -ne means not equal, -le less than or equal too
     do 
         read ANSWER
         check_answer
