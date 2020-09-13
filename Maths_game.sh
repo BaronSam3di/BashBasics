@@ -1,8 +1,6 @@
-#!/bin/bash
-#
-# Arithmatic Game 
-#
-# Initialize global variables
+#!/bin/bash     
+
+# Decalre some variables 
 
 NUMBER=0
 NUMBER1=0
@@ -12,24 +10,27 @@ ANSWER=0
 CORRECT=0
 MAX_TRIES=3
 
+# Decalare the functions
+
+
 function generate_question(){
-    generate_numbers
-    determine_operation
-    QUESTION="$NUMBER1 $OPERATION $NUMBER2"
+    generate_numbers                                    
+    determine_operation                                 
+    QUESTION="$NUMBER1 $OPERATION $NUMBER2"             
 }
 
 function generate_numbers(){
-    generate_number
-    NUMBER1=$NUMBER
-    generate_number
-    NUMBER2=$NUMBER
+    generate_number                                     
+    NUMBER1=$NUMBER                                     
+    generate_number                                     
+    NUMBER2=$NUMBER                                     
 }
 
-function generate_number(){
-    NUMBER=$((RANDOM%10+1))
+function generate_number(){                             
+    NUMBER=$((RANDOM%10+1))                     
 }
 
-function determine_operation(){
+function determine_operation(){                         
     RAND=$((RANDOM%3))
     case $RAND in 
         1) OPERATION='*';;
@@ -38,12 +39,12 @@ function determine_operation(){
     esac
 }
 
-function calculate_answer(){
-    CORRECT_ANSWER="$(echo "$QUESTION" | bc )"
+function calculate_answer(){                           
+    CORRECT_ANSWER="$(echo "$QUESTION" | bc )"          
 }
 
 function check_answer(){
-    if [ $ANSWER -eq $CORRECT_ANSWER 2>/dev/null ] ; then
+    if [ $ANSWER -eq $CORRECT_ANSWER 2>/dev/null ] ; then          
         echo "Correct!"
         CORRECT=1
         if [ $TRY -ne 1 ] ; then
@@ -78,6 +79,8 @@ function write_to_the_log(){
     fi
 }
 
+########## Put it all together
+
 init_log
 
 while true
@@ -89,7 +92,7 @@ do
     calculate_answer
     
     echo "How much is $QUESTION ? ( attempt $TRY)"
-    while [ $CORRECT -ne 1 ] && [ $TRY -le $MAX_TRIES ]
+    while [ $CORRECT -ne 1 ] && [ $TRY -le $MAX_TRIES ]         
     do 
         read ANSWER
         check_answer
